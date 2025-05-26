@@ -1,12 +1,18 @@
-#Find the unique number in an array
+def find_unique_numbers(nums):
+    # Step 1: Create an empty dictionary to count occurrences
+    freq = {}
 
-def SingleNumber(nums):
-    result = 0
+    # Step 2: Count each number in the list
     for num in nums:
-        result ^= num
-        return result
-    
-nums = [4,1,2,6,7,8,4,9]
+        if num in freq:
+            freq[num] += 1
+        else:
+            freq[num] = 1
 
+    # Step 3: Return a list of numbers that appear exactly once
+    unique_nums = [num for num, count in freq.items() if count == 1]
+    return unique_nums
 
-print(f"The number that is unique in the array is {SingleNumber(nums)}")
+nums = [4, 1, 2, 1, 2, 4, 9, 8]
+result = find_unique_numbers(nums)
+print(f"Numbers that appear only once: {result}")
